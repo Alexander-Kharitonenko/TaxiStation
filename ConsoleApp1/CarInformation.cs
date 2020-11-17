@@ -15,17 +15,33 @@ namespace ConsoleApp1
         {
             if(TaxiStation != null) 
             {
+                
+                    Console.ForegroundColor = ConsoleColor.Green;
                 for (int i = 0; i < TaxiStation.Length; i++)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    if (Spid > 0 | Spid <= TaxiStation[i].MaxSpid)
+
+                    if (Spid > 0 & Spid <= 20)
                     {
-                        
-                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}");break;
-                        
+                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}"); break;
                     }
-                    Console.ResetColor();
+                    else if (Spid > 20 & Spid <= 200)
+                    {
+
+                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i + 1].BrandCar}"); break;
+
+                    }
+                    else if (Spid > 200 & Spid <= 400)
+                    {
+
+                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i + 2].BrandCar}"); break;
+
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Car not found");break;
+                    }
                 }
+
             }
 
    
