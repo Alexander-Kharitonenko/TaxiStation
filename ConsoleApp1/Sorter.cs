@@ -23,7 +23,7 @@ namespace ConsoleApp1
             }
             else
             {
-                throw new Exception("Невозможно сравнить два объекта");
+                throw new Exception("Can't compare two objects");
             }
         }
     }

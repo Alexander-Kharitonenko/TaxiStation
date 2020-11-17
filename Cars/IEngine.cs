@@ -6,6 +6,6 @@ namespace Cars
 {
     public interface IEngine
     {
-        public void FuelСonsumption();
+        public float FuelСonsumption();
     }
 }

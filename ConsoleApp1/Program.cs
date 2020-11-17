@@ -15,7 +15,7 @@ namespace ConsoleApp1
             Car Middl_Cat = new CreatorMiddlCar().Criate();
             Car Beggare_Cat = new CreatorBeggareCar().Criate();
 
-            Car[] TaxiStation = { Elite_Cat, Middl_Cat, Beggare_Cat };
+            Car[] TaxiStation = { Beggare_Cat, Middl_Cat, Elite_Cat, };
 
             uint Prise = CarInformation.GetTaxiFleetPrice(TaxiStation);
 
@@ -42,11 +42,49 @@ namespace ConsoleApp1
             Console.ResetColor();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Cars sorted by speed");
+            Console.WriteLine($"Cars sorted by fuel consumption");
             CarInformation.SortCar(TaxiStation);
             Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();
+            try
+            {
+                while (true) {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Find a car by speed ? ");
+                    Console.ResetColor();
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("If yes press Y if no press N");
+                    Console.ResetColor();
+                    string Text1 = Console.ReadLine();
+                    if (Text1 == "Y")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Enter speed");
+                        Console.ResetColor();
+                        string Text_spid = Console.ReadLine();
+                        uint SpidCar = UInt32.Parse(Text_spid);
+                        CarInformation.GetCarbySpeed(TaxiStation, SpidCar); break;
+
+                    }
+                    if (Text1 == "N")
+                    {
+                        break;
+                    }
+
+                }
+                
+                
+
+                
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+
+            }
             while (true)
             {
 
@@ -78,6 +116,7 @@ namespace ConsoleApp1
                     Console.WriteLine(e.Message);
                    
                 }
+                
             }
 
         }

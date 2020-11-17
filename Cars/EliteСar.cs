@@ -18,19 +18,19 @@ namespace Cars
         }
 
 
-        public override void FuelСonsumption()
+        public override float FuelСonsumption()
         {
             
             if (TankСapacity != 0)
             {
 
-                TankСapacity = (TankСapacity / 100) * 8;    
+                TankСapacity = (TankСapacity / 100) * 9;    
                 Console.WriteLine($"Fuel consumption of elite cars {TankСapacity} liters per 100 km");
-                
+                return TankСapacity;
             }
             else
             {
-                base.FuelСonsumption();
+                return 0.0f;
             }
         }
 

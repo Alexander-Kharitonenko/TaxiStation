@@ -17,7 +17,7 @@ namespace Cars
             this.TankСapacity = TankСapacity;
         }
         
-        public override void FuelСonsumption()
+        public override float FuelСonsumption()
         {
             
             if (TankСapacity != 0)
@@ -25,11 +25,11 @@ namespace Cars
 
                 TankСapacity = (TankСapacity / 100) * 10;
                 Console.WriteLine($"Fuel consumption of a car of the middle class {TankСapacity} liters per 100 km");
-                
+                return TankСapacity;
             }
             else
             {
-               base.FuelСonsumption();
+                return 0.0f;
             }
         }
 

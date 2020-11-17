@@ -20,16 +20,18 @@ namespace Cars
         }
        
 
-        public override void FuelСonsumption()
+        public override float FuelСonsumption()
         {
             if (TankСapacity != 0)
             {
+                
                 Console.WriteLine($"Fuel consumption: Come on {TankСapacity} bottles of vodka and drove");
-               
+                return TankСapacity;
             }
             else
             {
-               base.FuelСonsumption();
+               
+                return 0.0f;
             }
         }
 

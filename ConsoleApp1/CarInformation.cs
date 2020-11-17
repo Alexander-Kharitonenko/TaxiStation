@@ -11,9 +11,24 @@ namespace ConsoleApp1
 
         public const string Path = @"C:\Users\Александр\Desktop\С#\Проект25 - ДЗ ООП\ConsoleApp1\ConsoleApp1\Data\";
 
-        public static void GetFuelСonsumption(Car[] TaxiStation)
+        public static void GetCarbySpeed(Car[] TaxiStation , uint Spid)
         {
+            if(TaxiStation != null) 
+            {
+                for (int i = 0; i < TaxiStation.Length; i++)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    if (Spid > 0 | Spid <= TaxiStation[i].MaxSpid)
+                    {
+                        
+                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}");break;
+                        
+                    }
+                    Console.ResetColor();
+                }
+            }
 
+   
         }
 
         public static uint GetTaxiFleetPrice(Car[] TaxiStation)
@@ -30,7 +45,7 @@ namespace ConsoleApp1
             Array.Sort(TaxiStation, new Sorter());
             foreach (var car in TaxiStation)
             {
-                Console.WriteLine($"Maximum speed { car.BrandCar} is {car.MaxSpid} Km/h");
+                car.FuelСonsumption();
             }
 
         }
@@ -46,14 +61,12 @@ namespace ConsoleApp1
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You have chosen an ELITE taxi, you want to get a cool bonus??");
                     Console.WriteLine();
-                    TaxiStation[0].FuelСonsumption();
-                    Console.WriteLine();
                     Console.WriteLine("If yes press Y if no press N");
                     Console.ResetColor();
                     string Text1 = Console.ReadLine();
                     if (Text1 == "Y")
                     {
-                        TaxiStation[0].GetBonusfromTaxi(Elitfile); break;
+                        TaxiStation[2].GetBonusfromTaxi(Elitfile); break;
 
                     }
                     else if (Text1 == "N")
@@ -71,8 +84,6 @@ namespace ConsoleApp1
                 case 2:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You have chosen a MIDDLE class taxi, you want to get a class bonus??");
-                    Console.WriteLine();
-                    TaxiStation[1].FuelСonsumption();
                     Console.WriteLine();
                     Console.WriteLine("If yes press Y if no press N");
                     Console.ResetColor();
@@ -99,14 +110,12 @@ namespace ConsoleApp1
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You have chosen a BEACH class taxi, you want to get a class bonus??");
                     Console.WriteLine();
-                    TaxiStation[2].FuelСonsumption();
-                    Console.WriteLine();
                     Console.WriteLine("If yes press Y if no press N");
                     Console.ResetColor();
                     string Text3 = Console.ReadLine();
                     if (Text3 == "Y")
                     {
-                        TaxiStation[2].GetBonusfromTaxi(Beggerfile); break;
+                        TaxiStation[0].GetBonusfromTaxi(Beggerfile); break;
 
                     }
                     else if (Text3 == "N")
