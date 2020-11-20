@@ -7,19 +7,16 @@ namespace ConsoleApp1
 {
     class Program
     {
-        
-
        public static void Main()
         {
-            Car Elite_Cat = new CreatorElitCat().Criate();
-            Car Middl_Cat = new CreatorMiddlCar().Criate();
-            Car Beggare_Cat = new CreatorBeggareCar().Criate();
+            Car Elite_Car = new CreatorEliteCar().Create();
+            Car Middle_Car = new CreatorMiddleCar().Create();
+            Car Beggare_Car = new CreatorBeggareCar().Create();
 
-            Car[] TaxiStation = { Beggare_Cat, Middl_Cat, Elite_Cat, };
+            Car[] TaxiStation = { Beggare_Car, Middle_Car, Elite_Car, };
 
-            uint Prise = CarInformation.GetTaxiFleetPrice(TaxiStation);
-
-
+            uint Price = CarInformation.GetTaxiFleetPrice(TaxiStation);
+  
             Console.WriteLine(
                 " _______________$$$$$$$$$$$$$$$$$$$'\n'" +
                 "______________$$$$_$$$$$$$$$$$$$$$$$'\n'" +
@@ -38,89 +35,16 @@ namespace ConsoleApp1
             Console.WriteLine();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"The cost of our taxi fleet is - {Prise}$");
-            Console.ResetColor();
+            Console.WriteLine($"The cost of our taxi fleet is - {Price}$");
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Cars sorted by fuel consumption");
             CarInformation.SortCar(TaxiStation);
-            Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();
-            try
-            {
-                while (true) {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Find a car by speed ? ");
-                    Console.ResetColor();
-                    Console.WriteLine();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("If yes press Y if no press N");
-                    Console.ResetColor();
-                    string Text1 = Console.ReadLine();
-                    if (Text1 == "Y")
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Enter speed");
-                        Console.ResetColor();
-                        string Text_spid = Console.ReadLine();
-                        uint SpidCar = UInt32.Parse(Text_spid);
-                        CarInformation.GetCarbySpeed(TaxiStation, SpidCar); break;
+            CarInformation. GetCarBySpeed(TaxiStation);
+            CarInformation.GetTaxiBonus(TaxiStation);
 
-                    }
-                    if (Text1 == "N")
-                    {
-                        break;
-                    }
-
-                }
-                
-                
-
-                
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.Message);
-
-            }
-            while (true)
-            {
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Select the taxi class you want to travel 1 - Elite 2 - Medium 3 - Poor");
-                Console.ResetColor();
-                Console.WriteLine();
-                try
-                {
-                    string Text = Console.ReadLine();
-                    int number = Int32.Parse(Text);
-                    if (number <= 3 | number > 0)
-                    {
-                        CarInformation.GetBonus(number, TaxiStation);
-                    }
-                    else 
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("You entered the wrong number, you need to enter from 1 to 3");
-                        Console.ResetColor();
-                        Program.Main();
-                    }
-                   
-
-                }
-                catch (Exception e)
-                {
-                    
-                    Console.WriteLine(e.Message);
-                   
-                }
-                
-            }
-
-        }
-        
+       }
 
     }
 }

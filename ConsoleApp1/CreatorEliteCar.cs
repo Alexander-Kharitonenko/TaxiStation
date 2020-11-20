@@ -5,12 +5,12 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    class CreatorMiddleCar : Taxi // реализация фабрик
+    class CreatorEliteCar : Taxi // реализация фабрики
     {
         public override Car Create()
         {
 
-            return new MiddleСars("TannedPriora", 4 , 400, 200, 50);
+            return new EliteСar("BatmanCar", 2 , 1000000, 400 , 70);
         }
     }
 }

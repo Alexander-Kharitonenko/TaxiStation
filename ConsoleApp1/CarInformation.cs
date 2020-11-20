@@ -11,37 +11,102 @@ namespace ConsoleApp1
 
         public const string Path = @"C:\Users\Александр\Desktop\С#\Проект25 - ДЗ ООП\ConsoleApp1\ConsoleApp1\Data\";
 
-        public static void GetCarbySpeed(Car[] TaxiStation , uint Spid)
+
+        public static void GetTaxiBonus(Car[] TaxiStation) 
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Select the taxi class you want to travel 1 - Elite 2 - Medium 3 - Poor");
+            Console.ResetColor();
+            Console.WriteLine();
+            try
+            {
+                string Text = Console.ReadLine();
+                int number = Int32.Parse(Text);
+                if (number <= 3 | number > 0)
+                {
+                    CarInformation.GetBonus(number, TaxiStation);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You entered the wrong number, you need to enter from 1 to 3");
+                    Console.ResetColor();
+                    Program.Main();
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+
+            }
+        }
+
+
+
+        public static void GetCarBySpeed(Car[] TaxiStation)
+        {
+            try
+            {
+
+
+                Console.WriteLine("Find a car by speed ? ");
+                Console.WriteLine();
+                Console.WriteLine("If yes press Y if no press N");
+                string Text1 = Console.ReadLine();
+                if (Text1 == "Y")
+                {
+
+                    Console.WriteLine("Enter speed");
+                    string Text_spid = Console.ReadLine();
+                    uint SpidCar = UInt32.Parse(Text_spid);
+                    SortedBySpeed(TaxiStation, SpidCar);
+                    GetCarBySpeed(TaxiStation);
+
+                }
+                else if (Text1 == "N")
+                {
+                    return;
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+
+            }
+        }
+
+
+
+        private static void SortedBySpeed(Car[] TaxiStation , uint Spid)
         {
             if(TaxiStation != null) 
             {
-                
-                    Console.ForegroundColor = ConsoleColor.Green;
                 for (int i = 0; i < TaxiStation.Length; i++)
                 {
-
-                    if (Spid > 0 & Spid <= 20)
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    if (Spid > 400 & Spid <= TaxiStation[i].MaxSpeed)
                     {
+                        
+                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}");break;
+                        
+                    }
+                    else if (Spid > 200 & Spid <= TaxiStation[i].MaxSpeed)
+                    {
+
                         Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}"); break;
+
                     }
-                    else if (Spid > 20 & Spid <= 200)
+                    else if (Spid > 50 & Spid <= TaxiStation[i].MaxSpeed)
                     {
 
-                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i + 1].BrandCar}"); break;
+                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}"); break;
 
                     }
-                    else if (Spid > 200 & Spid <= 400)
-                    {
-
-                        Console.WriteLine($"The machine at a given speed is {TaxiStation[i + 2].BrandCar}"); break;
-
-                    }
-                    else 
-                    {
-                        Console.WriteLine("Car not found");break;
-                    }
+                    Console.ResetColor();
                 }
-
             }
 
    
@@ -65,7 +130,7 @@ namespace ConsoleApp1
             }
 
         }
-        public static void GetBonus(int typeTaxi, Car[] TaxiStation)
+        private static void GetBonus(int typeTaxi, Car[] TaxiStation)
         {
 
             FileStream Elitfile = File.OpenRead($"{Path}\\BonusElitCar.txt");
@@ -97,6 +162,7 @@ namespace ConsoleApp1
                         Console.ResetColor();
                         Program.Main(); break;
                     }
+                   
                 case 2:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You have chosen a MIDDLE class taxi, you want to get a class bonus??");
@@ -106,7 +172,8 @@ namespace ConsoleApp1
                     string Text2 = Console.ReadLine();
                     if (Text2 == "Y")
                     {
-                        TaxiStation[1].GetBonusfromTaxi(Midlefile); break;
+                        TaxiStation[1].GetBonusfromTaxi(Midlefile);
+                        Program.Main(); break;
 
                     }
                     else if (Text2 == "N")
@@ -131,7 +198,8 @@ namespace ConsoleApp1
                     string Text3 = Console.ReadLine();
                     if (Text3 == "Y")
                     {
-                        TaxiStation[0].GetBonusfromTaxi(Beggerfile); break;
+                        TaxiStation[0].GetBonusfromTaxi(Beggerfile);
+                        Program.Main(); break;
 
                     }
                     else if (Text3 == "N")
@@ -148,6 +216,8 @@ namespace ConsoleApp1
                     }
 
             }
+            GetTaxiBonus(TaxiStation);
+            
         }
     }
 }

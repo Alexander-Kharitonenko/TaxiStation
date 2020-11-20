@@ -8,7 +8,7 @@ namespace Cars
     public abstract class Taxi // класс фабричного метода
     {
 
-        public abstract Car Criate(); // фабричный метод
+        public abstract Car Create(); // фабричный метод
 
        
     }

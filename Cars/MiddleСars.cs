@@ -8,12 +8,12 @@ namespace Cars
    public class MiddleСars : Car
     {
        
-        public MiddleСars(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
+        public MiddleСars(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity) : base(BrandCar, PassengerSeats, PriceCar, MaxSpeed, TankСapacity)
         {
             this.BrandCar = BrandCar;
             this.PassengerSeats = PassengerSeats;
             this.PriceCar = PriceCar;
-            this.MaxSpid = MaxSpid;
+            this.MaxSpeed = MaxSpeed;
             this.TankСapacity = TankСapacity;
         }
         

@@ -15,7 +15,7 @@ namespace Cars
 
         public  uint PriceCar { get; set; } // цена
 
-        public  uint MaxSpid { get; set; } // саксимальная скорость 
+        public  uint MaxSpeed { get; set; } // саксимальная скорость 
 
         public  float TankСapacity { get; set; }// бак
 
@@ -23,12 +23,12 @@ namespace Cars
 
 
 
-        public Car(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity)
+        public Car(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity)
         {
             this.BrandCar = BrandCar;
             this.PassengerSeats = PassengerSeats;
             this.PriceCar = PriceCar;
-            this.MaxSpid = MaxSpid;
+            this.MaxSpeed = MaxSpeed;
             this.TankСapacity = TankСapacity;
         }
         public abstract void GetBonusfromTaxi(FileStream file);

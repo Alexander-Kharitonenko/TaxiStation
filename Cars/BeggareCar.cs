@@ -5,10 +5,12 @@ using System.Text;
 
 namespace Cars
 {
-    public class EliteСar : Car, IEngine
+   public class BeggareCar : Car , IEngine
     {
+
         
-        public EliteСar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
+
+        public BeggareCar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
         {
             this.BrandCar = BrandCar;
             this.PassengerSeats = PassengerSeats;
@@ -16,23 +18,23 @@ namespace Cars
             this.MaxSpeed = MaxSpid;
             this.TankСapacity = TankСapacity;
         }
-
+       
 
         public override float FuelСonsumption()
         {
-            
             if (TankСapacity != 0)
             {
-
-                TankСapacity = (TankСapacity / 100) * 9;    
-                Console.WriteLine($"Fuel consumption of elite cars {TankСapacity} liters per 100 km");
+                
+                Console.WriteLine($"Fuel consumption: Come on {TankСapacity} bottles of vodka and drove");
                 return TankСapacity;
             }
             else
             {
+               
                 return 0.0f;
             }
         }
+
 
         public override void GetBonusfromTaxi(FileStream file)
         {
@@ -50,6 +52,9 @@ namespace Cars
                 throw new Exception("File is missing");
             }
         }
+
+        
+
 
     }
 }
