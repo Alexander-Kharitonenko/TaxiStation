@@ -7,14 +7,19 @@ namespace Cars
 {
    public class MiddleСars : Car
     {
-       
-        public MiddleСars(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity) : base(BrandCar, PassengerSeats, PriceCar, MaxSpeed, TankСapacity)
+        public override bool ServicePermission { get; set; }
+
+        public uint Price { get; set; }
+
+        public uint NumberOfKilometers { get; set; }
+        public uint CargoWeight { get; set; }
+
+        public MiddleСars(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity, bool ServicePermission, uint Price, uint CargoWeight,uint NumberOfKilometers) : base(BrandCar, PassengerSeats, PriceCar, MaxSpeed, TankСapacity)
         {
-            this.BrandCar = BrandCar;
-            this.PassengerSeats = PassengerSeats;
-            this.PriceCar = PriceCar;
-            this.MaxSpeed = MaxSpeed;
-            this.TankСapacity = TankСapacity;
+            this.ServicePermission = ServicePermission;
+            this.Price = Price;
+            this.CargoWeight = CargoWeight;
+            this.NumberOfKilometers = NumberOfKilometers;
         }
         
         public override float FuelСonsumption()
@@ -52,6 +57,19 @@ namespace Cars
             }
         }
 
-       
-   }
+        public override void CargoTransportationServices()
+        {
+            if (this.ServicePermission)
+            {
+                Price = this.Price * this.CargoWeight;
+                Console.WriteLine($"portation cost-{Price}$");
+            }
+            else
+            {
+                Price = this.Price * this.NumberOfKilometers;
+                Console.WriteLine($"Payment for travel-{Price}$"); ;
+            }
+        }
+
+    }
 }

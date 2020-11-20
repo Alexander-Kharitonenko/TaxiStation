@@ -7,14 +7,19 @@ namespace Cars
 {
     public class EliteСar : Car, IEngine
     {
-        
-        public EliteСar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
+        public override bool ServicePermission { get; set; }
+
+        public uint Price { get; set; }
+
+        public uint NumberOfKilometers { get; set; }
+        public uint CargoWeight { get; set; }
+
+        public EliteСar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity, bool ServicePermission, uint Price, uint NumberOfKilometers, uint CargoWeight) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
         {
-            this.BrandCar = BrandCar;
-            this.PassengerSeats = PassengerSeats;
-            this.PriceCar = PriceCar;
-            this.MaxSpeed = MaxSpid;
-            this.TankСapacity = TankСapacity;
+            this.ServicePermission = ServicePermission;
+            this.Price = Price;
+            this.NumberOfKilometers = NumberOfKilometers;
+            this.CargoWeight = CargoWeight;
         }
 
 
@@ -50,6 +55,18 @@ namespace Cars
                 throw new Exception("File is missing");
             }
         }
-
+        public override void CargoTransportationServices()
+        {
+            if (this.ServicePermission)
+            {
+                Price = this.Price * this.CargoWeight; 
+                Console.WriteLine($"portation cost-{Price}$");
+            }
+            else
+            {
+                Price = this.Price * this.NumberOfKilometers;
+                Console.WriteLine($"Payment for travel-{Price}$"); ;
+            }
+        }
     }
 }

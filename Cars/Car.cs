@@ -19,7 +19,10 @@ namespace Cars
 
         public  float TankСapacity { get; set; }// бак
 
-       
+        public abstract bool ServicePermission { get; set; }
+
+
+
 
 
 
@@ -33,9 +36,7 @@ namespace Cars
         }
         public abstract void GetBonusfromTaxi(FileStream file);
 
-
-
-       
+        public abstract void CargoTransportationServices();
     }
 }
 

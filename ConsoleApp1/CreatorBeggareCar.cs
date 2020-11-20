@@ -8,9 +8,9 @@ namespace ConsoleApp1
 {
     class CreatorBeggareCar : Taxi // реализация фабрики
     {
-        public override Car Create()
+        public override Car Create(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity, bool ServicePermission, uint Price, uint CargoWeight, uint NumberOfKilometers)
         {
-            return new BeggareCar("ManWithCart", 1, 100 , 20, 2);
+            return new BeggareCar(BrandCar, PassengerSeats, PriceCar, MaxSpeed, TankСapacity, ServicePermission, Price, CargoWeight, NumberOfKilometers);
         }
       
 

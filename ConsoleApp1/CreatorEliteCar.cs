@@ -7,10 +7,10 @@ namespace ConsoleApp1
 {
     class CreatorEliteCar : Taxi // реализация фабрики
     {
-        public override Car Create()
+        public override Car Create(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity, bool ServicePermission, uint Price, uint CargoWeight, uint NumberOfKilometers)
         {
 
-            return new EliteСar("BatmanCar", 2 , 1000000, 400 , 70);
+            return new EliteСar(BrandCar, PassengerSeats, PriceCar, MaxSpeed, TankСapacity, ServicePermission, Price, CargoWeight, NumberOfKilometers);
         }
     }
 }

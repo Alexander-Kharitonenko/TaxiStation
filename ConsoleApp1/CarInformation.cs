@@ -11,6 +11,8 @@ namespace ConsoleApp1
 
         public const string Path = @"C:\Users\Александр\Desktop\С#\Проект25 - ДЗ ООП\ConsoleApp1\ConsoleApp1\Data\";
 
+        
+
 
         public static void GetTaxiBonus(Car[] TaxiStation) 
         {
@@ -22,7 +24,7 @@ namespace ConsoleApp1
             {
                 string Text = Console.ReadLine();
                 int number = Int32.Parse(Text);
-                if (number <= 3 | number > 0)
+                if (number <= 3 & number > 0)
                 {
                     CarInformation.GetBonus(number, TaxiStation);
                 }
