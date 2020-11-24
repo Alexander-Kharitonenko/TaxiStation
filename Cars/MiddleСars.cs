@@ -5,16 +5,17 @@ using System.Text;
 
 namespace Cars
 {
-   public class MiddleСars : Car
+   public class MiddleСars : Car 
     {
-        public override bool ServicePermission { get; set; }
+        public bool ServicePermission { get; set; }
 
         public uint Price { get; set; }
 
         public uint NumberOfKilometers { get; set; }
+
         public uint CargoWeight { get; set; }
 
-        public MiddleСars(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity, bool ServicePermission, uint Price, uint CargoWeight,uint NumberOfKilometers) : base(BrandCar, PassengerSeats, PriceCar, MaxSpeed, TankСapacity)
+        public MiddleСars(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpeed, uint TankСapacity, uint Price, uint CargoWeight,uint NumberOfKilometers , bool ServicePermission = false) : base(BrandCar, PassengerSeats, PriceCar, MaxSpeed, TankСapacity)
         {
             this.ServicePermission = ServicePermission;
             this.Price = Price;
@@ -57,18 +58,24 @@ namespace Cars
             }
         }
 
+      
+
         public override void CargoTransportationServices()
         {
-            if (this.ServicePermission)
-            {
-                Price = this.Price * this.CargoWeight;
-                Console.WriteLine($"portation cost-{Price}$");
-            }
-            else
-            {
-                Price = this.Price * this.NumberOfKilometers;
-                Console.WriteLine($"Payment for travel-{Price}$"); ;
-            }
+            
+                Console.ForegroundColor = ConsoleColor.Red;
+                if (this.ServicePermission)
+                {
+                    Price = this.Price * this.CargoWeight;
+                    Console.WriteLine($"portation cost-{Price}$");
+                }
+                else
+                {
+                    Price = this.Price * this.NumberOfKilometers;
+                    Console.WriteLine($"Payment for travel-{Price}$"); ;
+                }
+                Console.ResetColor();
+            
         }
 
     }

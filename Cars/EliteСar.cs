@@ -1,27 +1,30 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Markup;
 
 namespace Cars
 {
     public class EliteСar : Car, IEngine
     {
-        public override bool ServicePermission { get; set; }
+        public bool RideWithMusic;
 
         public uint Price { get; set; }
 
         public uint NumberOfKilometers { get; set; }
-        public uint CargoWeight { get; set; }
 
-        public EliteСar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity, bool ServicePermission, uint Price, uint NumberOfKilometers, uint CargoWeight) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
+        public uint MusicСoefficient { get; set; }
+
+        public EliteСar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity, uint Price, uint MusicСoefficient, bool RideWithMusic) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
         {
-            this.ServicePermission = ServicePermission;
+           
             this.Price = Price;
             this.NumberOfKilometers = NumberOfKilometers;
-            this.CargoWeight = CargoWeight;
+            this.MusicСoefficient = MusicСoefficient;
+            this.RideWithMusic = RideWithMusic;
         }
-
 
         public override float FuelСonsumption()
         {
@@ -55,17 +58,35 @@ namespace Cars
                 throw new Exception("File is missing");
             }
         }
-        public override void CargoTransportationServices()
+
+        public void RadioСassette()
         {
-            if (this.ServicePermission)
+            if (this.RideWithMusic)
             {
-                Price = this.Price * this.CargoWeight; 
-                Console.WriteLine($"portation cost-{Price}$");
+                var reader = new Mp3FileReader(@"C:\Users\Александр\Desktop\С#\Проект25 - ДЗ ООП\ConsoleApp1\ConsoleApp1\Data\Music\Sound_06787.mp3");
+                var waveOut = new WaveOutEvent(); // or WaveOutEvent()
+                waveOut.Init(reader);
+                waveOut.Play();
             }
-            else
+            else 
             {
-                Price = this.Price * this.NumberOfKilometers;
-                Console.WriteLine($"Payment for travel-{Price}$"); ;
+                Console.WriteLine("You booked a quiet ride");
+            }
+
+
+        }
+
+        public void PaymentForTheTrip()
+        {
+            if (this.RideWithMusic)
+            {
+                Price += Price + NumberOfKilometers * MusicСoefficient;
+                Console.WriteLine($"Payment for travel - {Price}");
+            }
+            else 
+            {
+                Price += Price + NumberOfKilometers;
+                Console.WriteLine($"Payment for travel - {Price}");
             }
         }
     }

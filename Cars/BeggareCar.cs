@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+
 namespace Cars
 {
    public class BeggareCar : Car , IEngine
     {
 
-        public override bool ServicePermission { get; set; }
+        
 
         public uint Price { get; set; }
+
         public uint NumberOfKilometers { get; set; }
 
         public uint CargoWeight { get; set; }
 
-        public BeggareCar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity , bool ServicePermission, uint Price, uint CargoWeight, uint NumberOfKilometers) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
+        public BeggareCar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity , uint Price, uint CargoWeight, uint NumberOfKilometers) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
         {
-            this.ServicePermission = ServicePermission;
+            
             this.Price = Price;
             this.CargoWeight = CargoWeight;
             this.NumberOfKilometers = NumberOfKilometers;
@@ -58,19 +60,14 @@ namespace Cars
             }
         }
 
-        public override void CargoTransportationServices() 
+        public void PaymentForTheTrip()
         {
-            if (this.ServicePermission)
-            {
-                Price = this.Price * this.CargoWeight;
-                Console.WriteLine($"portation cost-{Price}$");
-            }
-            else
-            {
-                Price = this.Price * this.NumberOfKilometers;
-                Console.WriteLine($"Payment for travel-{Price}$"); ;
-            }
+
+            Price += Price + NumberOfKilometers * CargoWeight;
+            Console.WriteLine($"Payment for travel - {Price}$ and bonuses are not provided :)");
+
         }
+
 
 
     }

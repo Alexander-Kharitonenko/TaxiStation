@@ -51,7 +51,6 @@ namespace ConsoleApp1
             try
             {
 
-
                 Console.WriteLine("Find a car by speed ? ");
                 Console.WriteLine();
                 Console.WriteLine("If yes press Y if no press N");
@@ -70,7 +69,12 @@ namespace ConsoleApp1
                 {
                     return;
                 }
-
+                else 
+                {
+                    Console.WriteLine("You entered an invalid character, please try again");
+                    GetCarBySpeed(TaxiStation);
+                }
+                
             }
             catch (Exception e)
             {
@@ -101,7 +105,7 @@ namespace ConsoleApp1
                         Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}"); break;
 
                     }
-                    else if (Spid > 50 & Spid <= TaxiStation[i].MaxSpeed)
+                    else if (Spid > 0 & Spid <= TaxiStation[i].MaxSpeed)
                     {
 
                         Console.WriteLine($"The machine at a given speed is {TaxiStation[i].BrandCar}"); break;
@@ -149,7 +153,8 @@ namespace ConsoleApp1
                     string Text1 = Console.ReadLine();
                     if (Text1 == "Y")
                     {
-                        TaxiStation[2].GetBonusfromTaxi(Elitfile); break;
+                        TaxiStation[2].GetBonusfromTaxi(Elitfile);
+                        (TaxiStation[2] as EliteСar).RadioСassette(); break;
 
                     }
                     else if (Text1 == "N")
@@ -175,8 +180,9 @@ namespace ConsoleApp1
                     if (Text2 == "Y")
                     {
                         TaxiStation[1].GetBonusfromTaxi(Midlefile);
-                        Program.Main(); break;
 
+                        TaxiStation[1].CargoTransportationServices(); break;
+                        
                     }
                     else if (Text2 == "N")
                     {
@@ -187,8 +193,9 @@ namespace ConsoleApp1
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("You entered the wrong character, try to repeat all the steps again");
-                        Console.ResetColor();
-                        Program.Main(); break;
+                        Console.ResetColor(); break;
+
+
                     }
 
                 case 3:
@@ -200,8 +207,10 @@ namespace ConsoleApp1
                     string Text3 = Console.ReadLine();
                     if (Text3 == "Y")
                     {
+                        
                         TaxiStation[0].GetBonusfromTaxi(Beggerfile);
-                        Program.Main(); break;
+                        (TaxiStation[0] as BeggareCar).PaymentForTheTrip(); break;
+
 
                     }
                     else if (Text3 == "N")
