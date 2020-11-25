@@ -17,7 +17,7 @@ namespace Cars
 
         public uint MusicСoefficient { get; set; }
 
-        public EliteСar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity, uint Price, uint MusicСoefficient, bool RideWithMusic) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
+        public EliteСar(string BrandCar, uint PassengerSeats, uint PriceCar, uint MaxSpid, uint TankСapacity, uint Price, uint MusicСoefficient, uint NumberOfKilometers, bool RideWithMusic) : base(BrandCar, PassengerSeats, PriceCar, MaxSpid, TankСapacity)
         {
            
             this.Price = Price;

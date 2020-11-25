@@ -181,7 +181,7 @@ namespace ConsoleApp1
                     {
                         TaxiStation[1].GetBonusfromTaxi(Midlefile);
 
-                        TaxiStation[1].CargoTransportationServices(); break;
+                        (TaxiStation[1] as MiddleСars).CargoTransportationServices(); break;
                         
                     }
                     else if (Text2 == "N")

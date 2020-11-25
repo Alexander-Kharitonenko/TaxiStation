@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Cars
 {
-    public abstract class Car : Engine,IGetBonus
+    public abstract class Car : Engine
     {
         
         public  string BrandCar { get; set; }// марка машины
@@ -36,10 +36,7 @@ namespace Cars
         }
         public abstract void GetBonusfromTaxi(FileStream file);
 
-        public virtual void CargoTransportationServices()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
 
